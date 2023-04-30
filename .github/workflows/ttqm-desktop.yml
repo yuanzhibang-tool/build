@@ -1,0 +1,100 @@
+name: ttqm-desktop
+on:
+  push:
+    branches: ['ttqm-desktop']
+  workflow_dispatch:
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - name: Build Linux
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          cd TTQM-Desktop
+          git checkout develop
+          yarn install
+          yarn run build-ttqm-linux
+
+  build-win:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.2
+      - name: Build Win
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          cd TTQM-Desktop
+          git checkout develop
+          yarn install
+          yarn run build-ttqm-win
+
+  build-mas-dev:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.2
+      - name: Build Mas Dev
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          cd TTQM-Desktop
+          git checkout develop
+          yarn install
+          yarn run build-ttqm-mas-dev
+
+  build-mas:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.2
+      - name: Build Mas
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          cd TTQM-Desktop
+          git checkout develop
+          yarn install
+          yarn run build-ttqm-mas
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.2
+      - name: Build Mac
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          cd TTQM-Desktop
+          git checkout develop
+          yarn install
+          yarn run build-ttqm-mac

@@ -1,0 +1,64 @@
+name: yufeng-desktop
+on:
+  push:
+    branches: ['yufeng-desktop']
+  workflow_dispatch:
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.2
+      - name: Build Mac
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $YUFENG_DESKTOP_REPO_URL --branch develop --single-branch
+          cd yufeng-desktop
+          git checkout develop
+          yarn install
+          yarn run build-mac
+          yzb-oss-upload-folder --folder=.upload --prefix=$YUFENG_UPLOAD_PREFIX --bucket=$ALI_STATIC_BUCKET --access_key_id=$ALI_ACCESS_KEY_ID --access_key_secret=$ALI_ACCESS_KEY_SECRET
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - name: Build Linux
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $YUFENG_DESKTOP_REPO_URL --branch develop --single-branch
+          cd yufeng-desktop
+          git checkout develop
+          yarn install
+          yarn run build-linux
+          yzb-oss-upload-folder --folder=.upload --prefix=$YUFENG_UPLOAD_PREFIX --bucket=$ALI_STATIC_BUCKET --access_key_id=$ALI_ACCESS_KEY_ID --access_key_secret=$ALI_ACCESS_KEY_SECRET
+  build-win:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.2
+      - name: Build Win
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $YUFENG_DESKTOP_REPO_URL --branch develop --single-branch
+          cd yufeng-desktop
+          git checkout develop
+          yarn install
+          yarn run build-win
+          yzb-oss-upload-folder --folder=.upload --prefix=$YUFENG_UPLOAD_PREFIX --bucket=$ALI_STATIC_BUCKET --access_key_id=$ALI_ACCESS_KEY_ID --access_key_secret=$ALI_ACCESS_KEY_SECRET
+
