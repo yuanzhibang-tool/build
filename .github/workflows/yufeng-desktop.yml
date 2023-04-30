@@ -6,6 +6,12 @@ on:
 jobs:
   build-mac:
     runs-on: macos-latest
+    env:
+      YUFENG_DESKTOP_REPO_URL: ${{ secrets.YUFENG_DESKTOP_REPO_URL }}
+      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
+      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
+      YUFENG_UPLOAD_PREFIX: ${{ vars.YUFENG_UPLOAD_PREFIX }}
+      ALI_STATIC_BUCKET: ${{ vars.ALI_STATIC_BUCKET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -25,6 +31,12 @@ jobs:
           yzb-oss-upload-folder --folder=.upload --prefix=$YUFENG_UPLOAD_PREFIX --bucket=$ALI_STATIC_BUCKET --access_key_id=$ALI_ACCESS_KEY_ID --access_key_secret=$ALI_ACCESS_KEY_SECRET
   build-linux:
     runs-on: ubuntu-latest
+    env:
+      YUFENG_DESKTOP_REPO_URL: ${{ secrets.YUFENG_DESKTOP_REPO_URL }}
+      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
+      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
+      YUFENG_UPLOAD_PREFIX: ${{ vars.YUFENG_UPLOAD_PREFIX }}
+      ALI_STATIC_BUCKET: ${{ vars.ALI_STATIC_BUCKET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -44,6 +56,12 @@ jobs:
           yzb-oss-upload-folder --folder=.upload --prefix=$YUFENG_UPLOAD_PREFIX --bucket=$ALI_STATIC_BUCKET --access_key_id=$ALI_ACCESS_KEY_ID --access_key_secret=$ALI_ACCESS_KEY_SECRET
   build-win:
     runs-on: macos-latest
+    env:
+      YUFENG_DESKTOP_REPO_URL: ${{ secrets.YUFENG_DESKTOP_REPO_URL }}
+      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
+      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
+      YUFENG_UPLOAD_PREFIX: ${{ vars.YUFENG_UPLOAD_PREFIX }}
+      ALI_STATIC_BUCKET: ${{ vars.ALI_STATIC_BUCKET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
