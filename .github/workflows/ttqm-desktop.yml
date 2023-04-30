@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TTQM_DESKTOP_REPO_URL: ${{ secrets.TTQM_DESKTOP_REPO_URL }}
-      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
-      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -31,8 +29,6 @@ jobs:
     runs-on: macos-latest
     env:
       TTQM_DESKTOP_REPO_URL: ${{ secrets.TTQM_DESKTOP_REPO_URL }}
-      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
-      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -54,8 +50,6 @@ jobs:
     runs-on: macos-latest
     env:
       TTQM_DESKTOP_REPO_URL: ${{ secrets.TTQM_DESKTOP_REPO_URL }}
-      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
-      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -77,8 +71,6 @@ jobs:
     runs-on: macos-latest
     env:
       TTQM_DESKTOP_REPO_URL: ${{ secrets.TTQM_DESKTOP_REPO_URL }}
-      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
-      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -100,8 +92,6 @@ jobs:
     runs-on: macos-latest
     env:
       TTQM_DESKTOP_REPO_URL: ${{ secrets.TTQM_DESKTOP_REPO_URL }}
-      ALI_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
-      ALI_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
