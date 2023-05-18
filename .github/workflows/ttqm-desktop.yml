@@ -124,7 +124,7 @@ jobs:
           npm install yarn -g
           npm install @yuanzhibang/cli -g
           npm install
-          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          git clone $env:TTQM_DESKTOP_REPO_URL --branch develop --single-branch
           cd TTQM-Desktop
           git checkout develop
           yarn install
