@@ -1,4 +1,4 @@
-name: ttqm-desktop
+name: test
 on:
   push:
     branches: ['ttqm-desktop']
