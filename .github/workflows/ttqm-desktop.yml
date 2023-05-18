@@ -108,3 +108,25 @@ jobs:
           git checkout develop
           yarn install
           yarn run build-ttqm-mac
+
+  build-appx:
+    runs-on: windows-2019
+    env:
+      TTQM_DESKTOP_REPO_URL: ${{ secrets.TTQM_DESKTOP_REPO_URL }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - name: Build Appx
+        run: |
+          npm install yarn -g
+          npm install @yuanzhibang/cli -g
+          npm install
+          git clone $TTQM_DESKTOP_REPO_URL --branch develop --single-branch
+          cd TTQM-Desktop
+          git checkout develop
+          yarn install
+          yarn run build-ttqm-appx
+        shell: powershell
